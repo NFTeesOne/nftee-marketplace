@@ -40,7 +40,14 @@ interface IBuyItNow {
     }
 
     event NFTeeListed(
-        uint256 indexed tokenId,
+        uint256 indexed listingId,
+        address indexed seller,
+        address indexed nfteeContract,
+        Listing listing
+    );
+
+    event NFTeeUpdated(
+        uint256 indexed listingId,
         address indexed seller,
         address indexed nfteeContract,
         Listing listing
@@ -57,13 +64,23 @@ interface IBuyItNow {
     );
 
     event NFTeeRemoved(
-        address indexed seller,
-        uint256 indexed listingId
+        uint256 indexed listingId,
+        address indexed seller
     );
 
     function listNFTee(ListingParameters calldata _listingParameters) external returns (uint256 listingId);
 
+    function updateNFTee(uint256 _listingId, ListingParameters calldata _listingParameters) external;
+
     function buyNFTee(uint256 _listingId, address _sendTo, uint256 _quantity, uint256 _totalPrice) external payable;
 
     function removeNFTee(uint256 _listingId) external;
+
+    function getTotalListings() external view returns (uint256);
+
+    function getListing(uint256 _listingId) external view returns (Listing memory listing);
+
+    function getAllActiveListings(uint256 _startId, uint256 _endId) external view returns (Listing[] memory listings);
+
+    function getAllHistoricalListings(uint256 _startId, uint256 _endId) external view returns (Listing[] memory listings);
 }
