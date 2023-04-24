@@ -60,4 +60,10 @@ interface IBuyItNow {
         address indexed seller,
         uint256 indexed listingId
     );
+
+    function listNFTee(ListingParameters calldata _listingParameters) external returns (uint256 listingId);
+
+    function buyNFTee(uint256 _listingId, address _sendTo, uint256 _quantity, uint256 _totalPrice) external payable;
+
+    function removeNFTee(uint256 _listingId) external;
 }
