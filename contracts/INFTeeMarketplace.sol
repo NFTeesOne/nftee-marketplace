@@ -49,7 +49,7 @@ interface IBuyItNow {
     event NFTeeSold(
         uint256 indexed listingId,
         address indexed seller,
-        address indexed nfteeContract
+        address indexed nfteeContract,
         uint256 tokenId,
         address buyer,
         uint256 quantity,
