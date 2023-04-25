@@ -22,7 +22,7 @@ interface IBuyItNow {
         uint256 quantity;
         uint256 price;
         uint256 royalty;
-        uint256 royaltyRecipient;
+        address royaltyRecipient;
         uint128 startTimestamp;
         uint128 endTimestamp;
     }
